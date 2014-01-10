@@ -4,19 +4,18 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
 public class Targetting implements Runnable {
     
-    Main robot;
-    NetworkTable cameraTable;
+    Main robot = Main.getInstance();
+    NetworkTable server;
     
     public Targetting(Main robot) {
-        this.robot = robot;
-        cameraTable = NetworkTable.getTable("camera");
+        server = NetworkTable.getTable("SmartDashboard");
     }
     
     public void run() {
         
         double range;
         while (true) {
-            range = cameraTable.getNumber("range");
+            range = server.getNumber("range");
             robot.station.sendToLCD("Range = " + range);
         }
         

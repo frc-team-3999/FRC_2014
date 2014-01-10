@@ -6,6 +6,15 @@ public class Main extends SimpleRobot {
 
     DStation station;
     DriveSystem drive;
+
+    private static Main instance = null;
+    protected Main() {}
+    public static Main getInstance() {
+        if (instance == null) {
+            instance = new Main();
+        }
+        return instance;
+    }
     
     public void robotInit() {
 
@@ -14,7 +23,7 @@ public class Main extends SimpleRobot {
         new Thread(station).start();
         
         // activate the drive system
-        drive = new DriveSystem(this);
+        drive = new DriveSystem();
         new Thread(drive).start();
         
     }
