@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.Joystick;
 
 public class Main extends SimpleRobot {
 
-    Joystick driverPad = new Joystick(1);
     DStation station;
     DriveSystem drive;
     
@@ -16,7 +15,7 @@ public class Main extends SimpleRobot {
         new Thread(station).start();
         
         // activate the drive system
-        drive = new DriveSystem(this,driverPad);
+        drive = new DriveSystem(this);
         new Thread(drive).start();
         
     }

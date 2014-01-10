@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.Timer;
 
 public class DriveSystem implements Runnable {
 
-    Joystick control;
+    Joystick control = new Joystick(1);
     Main robot;
 
     Victor leftFront = new Victor(1);
@@ -18,9 +18,8 @@ public class DriveSystem implements Runnable {
     
     RobotDrive drive = new RobotDrive(leftFront,leftRear,rightFront,rightRear);
     
-    public DriveSystem(Main robot, Joystick control) {
-        this.robot = robot;
-        this.control = control;  
+    public DriveSystem(Main robot) {
+        this.robot = robot;  
     }
     
     public void run() {
