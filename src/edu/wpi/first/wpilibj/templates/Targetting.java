@@ -16,7 +16,6 @@ public class Targetting implements Runnable {
         double range;
         while (true) {
             range = server.getNumber("range");
-            robot.station.sendToLCD("Range = " + range);
         }
         
     }
