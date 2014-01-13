@@ -20,7 +20,7 @@ public class Main extends SimpleRobot {
     
     public void robotInit() {
 
-        // start the driver station communications
+        // start communications
         station = new DStation();
         new Thread(station).start();
         

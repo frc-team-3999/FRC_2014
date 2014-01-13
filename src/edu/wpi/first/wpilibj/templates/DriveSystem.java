@@ -1,5 +1,6 @@
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -10,18 +11,20 @@ public class DriveSystem implements Runnable {
 
     Main robot = Main.getInstance();
 
-    static Victor leftFront = new Victor(1);
-    static Victor leftRear = new Victor(2);
-    static Victor rightFront = new Victor(3);
-    static Victor rightRear = new Victor(4);
+    private static Gyro gyro;
+    
+    private static Victor leftFront = new Victor(1);
+    private static Victor leftRear = new Victor(2);
+    private static Victor rightFront = new Victor(3);
+    private static Victor rightRear = new Victor(4);
 
-    RobotDrive drive = new RobotDrive(leftFront, leftRear, rightFront, rightRear);
+    private RobotDrive drive = new RobotDrive(leftFront, leftRear, rightFront, rightRear);
 
     static Joystick control = new Joystick(1);
 
     // constructor
     public DriveSystem() {
-
+        gyro.reset();
     }
 
     public void run() {
@@ -72,8 +75,6 @@ public class DriveSystem implements Runnable {
 
     private void autoDrive() {
 
-        // use angle and range to line up bot for firing.
-        // prolly need a gyro to do it right
         return;
     }
 

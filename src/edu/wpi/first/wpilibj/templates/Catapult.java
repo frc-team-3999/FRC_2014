@@ -9,7 +9,7 @@ public class Catapult implements Runnable {
     Main robot = Main.getInstance();
     boolean firing;
 
-    static Compressor compressor = new Compressor(1,1);
+    private static Compressor compressor = new Compressor(1,1);
     
     static Joystick control = new Joystick(2);
     

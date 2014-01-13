@@ -4,7 +4,7 @@ package edu.wpi.first.wpilibj.templates;
  * @author William Dell
  * @author Team 3999
  * @version v7, January 7, 2014
- * @version FRC Java version 2013.589
+ * @version FRC Java version 2013.0.589
  */
 import edu.wpi.first.wpilibj.*;
 
