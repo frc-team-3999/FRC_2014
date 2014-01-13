@@ -4,8 +4,10 @@ import edu.wpi.first.wpilibj.SimpleRobot;
 
 public class Main extends SimpleRobot {
 
-    DStation station;
-    DriveSystem drive;
+    static DStation station;
+    static DriveSystem drive;
+    static Targetting targetting;
+    static Catapult catapult;
 
     private static Main instance = null;
     protected Main() {}
@@ -22,9 +24,17 @@ public class Main extends SimpleRobot {
         station = new DStation();
         new Thread(station).start();
         
+        // initialize targetting
+        targetting = new Targetting();
+        new Thread(targetting).start();
+        
         // activate the drive system
         drive = new DriveSystem();
         new Thread(drive).start();
+        
+        // charge up the catapult
+        catapult = new Catapult();
+        new Thread(catapult).start();
         
     }
    
