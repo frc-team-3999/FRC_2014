@@ -8,15 +8,6 @@ public class Main extends SimpleRobot {
     static DriveSystem drive;
     static Targetting targetting;
     static Catapult catapult;
-
-    private static Main instance = null;
-    protected Main() {}
-    public static Main getInstance() {
-        if (instance == null) {
-            instance = new Main();
-        }
-        return instance;
-    }
     
     public void robotInit() {
 
@@ -25,15 +16,15 @@ public class Main extends SimpleRobot {
         new Thread(station).start();
         
         // initialize targetting
-        targetting = new Targetting();
+        targetting = new Targetting(this);
         new Thread(targetting).start();
         
         // activate the drive system
-        drive = new DriveSystem();
+        drive = new DriveSystem(this);
         new Thread(drive).start();
         
         // charge up the catapult
-        catapult = new Catapult();
+        catapult = new Catapult(this);
         new Thread(catapult).start();
         
     }

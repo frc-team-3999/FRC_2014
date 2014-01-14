@@ -9,22 +9,22 @@ import edu.wpi.first.wpilibj.Timer;
 
 public class DriveSystem implements Runnable {
 
-    Main robot = Main.getInstance();
+    Main robot;
 
     private static Gyro gyro;
     
-    private static Victor leftFront = new Victor(1);
-    private static Victor leftRear = new Victor(2);
-    private static Victor rightFront = new Victor(3);
-    private static Victor rightRear = new Victor(4);
+    private static final Victor leftFront = new Victor(1);
+    private static final Victor leftRear = new Victor(2);
+    private static final Victor rightFront = new Victor(3);
+    private static final Victor rightRear = new Victor(4);
 
-    private RobotDrive drive = new RobotDrive(leftFront, leftRear, rightFront, rightRear);
+    private final RobotDrive drive = new RobotDrive(leftFront, leftRear, rightFront, rightRear);
 
     static Joystick control = new Joystick(1);
 
     // constructor
-    public DriveSystem() {
-        gyro.reset();
+    public DriveSystem(Main robot) {
+        this.robot = robot;
     }
 
     public void run() {
@@ -32,14 +32,14 @@ public class DriveSystem implements Runnable {
         while (true) {  // start infinite loop to keep thread running
 
             if (robot.isEnabled()) {
-
+                
                 if (robot.isAutonomous()) {
                     
                     // do some autonomous stuff
 
                 } else if (robot.isOperatorControl()) {
 
-                    if (!robot.catapult.firing) {
+                    if (!Main.catapult.firing) {
                         manualDrive();
                     } else {
                         autoDrive();
@@ -69,13 +69,11 @@ public class DriveSystem implements Runnable {
         double rotation = control.getRawAxis(3);
 
         drive.mecanumDrive_Polar(magnitude, direction, rotation);
-
-        return;
     }
 
     private void autoDrive() {
-
-        return;
+        
+        Main.catapult.firing = false;
     }
 
 }

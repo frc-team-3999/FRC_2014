@@ -6,14 +6,15 @@ import edu.wpi.first.wpilibj.Timer;
 
 public class Catapult implements Runnable {
     
-    Main robot = Main.getInstance();
+    Main robot;
     boolean firing;
 
-    private static Compressor compressor = new Compressor(1,1);
+    private static final Compressor compressor = new Compressor(1,1);
     
     static Joystick control = new Joystick(2);
     
-    public Catapult() {
+    public Catapult(Main robot) {
+        this.robot = robot;
         compressor.start();
     }
     

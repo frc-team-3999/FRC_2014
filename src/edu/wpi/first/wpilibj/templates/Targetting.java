@@ -5,19 +5,21 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
 public class Targetting implements Runnable {
 
-    Main robot = Main.getInstance();
+    Main robot;
     NetworkTable table;
 
-    public Targetting() {
+    public Targetting(Main robot) {
+        this.robot = robot;
         table = NetworkTable.getTable("SmartDashboard");
         table.putNumber("Range", 0);
         table.putNumber("Angle", 0);
-        table.putNumber("Elevation", 0);
     }
 
     public void run() {
 
         while (true) {
+            Main.station.toLCDLine(1, "Range " + getRange());
+            Main.station.toLCDLine(2, "Angle " + getAngle());
             Timer.delay(.01);
         }
         
@@ -31,10 +33,5 @@ public class Targetting implements Runnable {
     public double getAngle() {
         return table.getNumber("Angle");
     }
-    
-    public double getElevation() {
-        return table.getNumber("Elevation");
-    }
-    
-    
+
 }
