@@ -22,14 +22,13 @@ public class Targetting implements Runnable {
             Main.station.toLCDLine(2, "Angle " + getAngle());
             Timer.delay(.01);
         }
-        
 
     }
 
     public double getRange() {
         return table.getNumber("Range");
     }
-    
+
     public double getAngle() {
         return table.getNumber("Angle");
     }

@@ -11,18 +11,23 @@ public class Catapult implements Runnable {
     boolean firing;
 
     private static final Compressor compressor = new Compressor(1,1);
+    private static final DoubleSolenoid solenoid = new DoubleSolenoid(1,2);
     
     static Joystick control = new Joystick(2);
     
     public Catapult(Main robot) {
         this.robot = robot;
         compressor.start();
+        solenoid.set(DoubleSolenoid.Value.kReverse);
     }
     
     public void run() {
         
         while (true) {
 
+            if (control.getRawButton(8)) {
+                solenoid.set(DoubleSolenoid.Value.kForward);
+            }
             Timer.delay(.005);
         }
         
