@@ -16,7 +16,7 @@ public class DriveSystem implements Runnable {
 
     private final RobotDrive drive = new RobotDrive(leftFront, leftRear, rightFront, rightRear);
 
-    Controller control;
+    private static Controller control;
 
     // constructor
     public DriveSystem(Main robot) {
@@ -31,7 +31,7 @@ public class DriveSystem implements Runnable {
         while (true) {  // start infinite loop to keep thread running
 
             if (robot.isEnabled()) {
-                
+
                 if (robot.isAutonomous()) {
                     
                     // do some autonomous stuff
@@ -44,8 +44,9 @@ public class DriveSystem implements Runnable {
                         autoDrive();
                     }
                 }
-                Timer.delay(.005);
             }
+            
+            Timer.delay(.005);
         }
     }
 
