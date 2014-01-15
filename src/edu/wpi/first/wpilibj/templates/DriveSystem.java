@@ -1,7 +1,5 @@
 package edu.wpi.first.wpilibj.templates;
 
-import edu.wpi.first.wpilibj.Gyro;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.RobotDrive;
 import com.sun.squawk.util.MathUtils;
@@ -10,8 +8,6 @@ import edu.wpi.first.wpilibj.Timer;
 public class DriveSystem implements Runnable {
 
     Main robot;
-
-    private static Gyro gyro;
     
     private static final Victor leftFront = new Victor(1);
     private static final Victor leftRear = new Victor(2);
@@ -20,15 +16,18 @@ public class DriveSystem implements Runnable {
 
     private final RobotDrive drive = new RobotDrive(leftFront, leftRear, rightFront, rightRear);
 
-    static Joystick control = new Joystick(1);
+    Controller control;
 
     // constructor
     public DriveSystem(Main robot) {
         this.robot = robot;
+        control = new Controller(1);
     }
 
     public void run() {
 
+        new Thread(control).start();
+        
         while (true) {  // start infinite loop to keep thread running
 
             if (robot.isEnabled()) {
@@ -45,7 +44,6 @@ public class DriveSystem implements Runnable {
                         autoDrive();
                     }
                 }
-
                 Timer.delay(.005);
             }
         }
