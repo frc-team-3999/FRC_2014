@@ -2,6 +2,7 @@ package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Timer;
 
 public class Catapult implements Runnable {
     
@@ -27,8 +28,22 @@ public class Catapult implements Runnable {
         while (true) {
 
             if (control.button[8]) {
+                firing = true;
                 solenoid.set(DoubleSolenoid.Value.kForward);
+                do {
+                    Timer.delay(1);
+                } while (control.button[8]);
             }
+            
+            if (control.button[1]) {
+                firing = false;
+                solenoid.set(DoubleSolenoid.Value.kReverse);
+                do {
+                    Timer.delay(1);
+                } while (control.button[1]);
+            }
+            
+            Timer.delay(.1);
         } 
     }
 }

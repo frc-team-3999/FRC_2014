@@ -67,6 +67,10 @@ public class DriveSystem implements Runnable {
         double rotation = control.getRawAxis(3);
 
         drive.mecanumDrive_Polar(magnitude, direction, rotation);
+        
+        // comment out mecanumDrive above and uncomment tankDrive below
+        // for use on dinobot
+        //drive.tankDrive(control.getRawAxis(2), control.getRawAxis(4));
     }
 
     private void autoDrive() {
