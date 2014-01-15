@@ -4,10 +4,10 @@ import edu.wpi.first.wpilibj.SimpleRobot;
 
 public class Main extends SimpleRobot {
 
-    static DStation station;
-    static DriveSystem drive;
-    static Targetting targetting;
-    static Catapult catapult;
+    public static DStation station;
+    public static DriveSystem drive;
+    public static Targetting targetting;
+    public static Catapult catapult;
     
     public void robotInit() {
 
