@@ -206,10 +206,10 @@ public class DStation implements Runnable {
             lowDashData.finalizeCluster();
 
             // if you have a solenoid module uncomment the line below
-            //lowDashData.addByte(Solenoid.getAllFromDefaultModule());
+            lowDashData.addByte(Solenoid.getAllFromDefaultModule());
             // and comment out the next two lines
-            byte thisBytes = 0;
-            lowDashData.addByte(thisBytes);
+            //byte thisBytes = 0;
+            //lowDashData.addByte(thisBytes);
         }
         lowDashData.finalizeCluster();
         lowDashData.commit();

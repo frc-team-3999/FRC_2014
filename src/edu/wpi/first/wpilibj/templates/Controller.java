@@ -5,8 +5,6 @@ import edu.wpi.first.wpilibj.Timer;
 
 public class Controller extends Joystick implements Runnable {
 
-    Joystick controller;
-
     public boolean button[] = new boolean[13];
 
     public Controller(int port) {
@@ -16,8 +14,9 @@ public class Controller extends Joystick implements Runnable {
     public void run() {
 
         while (true) {
+            button[0] = false;
             for (int i = 1; i <= 12; i++) {
-                button[i] = controller.getRawButton(i);
+                button[i] = this.getRawButton(i);
             }   
             Timer.delay(.005);
         }

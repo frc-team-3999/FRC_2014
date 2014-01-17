@@ -45,8 +45,6 @@ public class DriveSystem implements Runnable {
                     }
                 }
             }
-            
-            Timer.delay(.005);
         }
     }
 

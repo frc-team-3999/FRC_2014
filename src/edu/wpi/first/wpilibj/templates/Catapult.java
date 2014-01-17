@@ -10,7 +10,7 @@ public class Catapult implements Runnable {
     boolean firing;
 
     private static final Compressor compressor = new Compressor(1,1);
-    private static final DoubleSolenoid solenoid = new DoubleSolenoid(1,2);
+    DoubleSolenoid solenoid = new DoubleSolenoid(1,2);
     
     Controller control;
     
@@ -27,20 +27,20 @@ public class Catapult implements Runnable {
         
         while (true) {
 
-            if (control.button[8]) {
+            if (control.button[4]) {
                 firing = true;
                 solenoid.set(DoubleSolenoid.Value.kForward);
                 do {
-                    Timer.delay(1);
-                } while (control.button[8]);
+                    Timer.delay(.5);
+                } while (control.button[4]);
             }
             
-            if (control.button[1]) {
+            if (control.button[2]) {
                 firing = false;
                 solenoid.set(DoubleSolenoid.Value.kReverse);
                 do {
-                    Timer.delay(1);
-                } while (control.button[1]);
+                    Timer.delay(.5);
+                } while (control.button[2]);
             }
             
             Timer.delay(.1);
