@@ -1,4 +1,3 @@
-
 package edu.wpi.first.wpilibj.templates;
 
 
@@ -39,6 +38,7 @@ public class EncoderDrive implements Runnable {
         
         new Thread(control).start();
          while (true) {
+             SingleEncoder.reset();
 
             while (200 >= SingleEncoder.get()){
              if (control.button[1]) {
