@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj.Talon;
 
 public class Catapult implements Runnable {
     
-    private final Main robot;
     public boolean firing;
 
     // compressor on digital 1 and relay 1
@@ -20,13 +19,11 @@ public class Catapult implements Runnable {
     
     private final Controller control;
     
-    public Catapult(Main robot) {
-        this.robot = robot;        
+    public Catapult() {        
         control = new Controller(2);      
         compressor.start();
         solenoid.set(DoubleSolenoid.Value.kForward);
         strap.setReverseDirection(true);
-        //strap.setSamplesToAverage(5);
     }
     
     public void run() {
