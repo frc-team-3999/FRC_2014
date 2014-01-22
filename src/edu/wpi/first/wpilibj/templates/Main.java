@@ -24,7 +24,7 @@ public class Main extends SimpleRobot {
         new Thread(drive).start();
         
         // charge up the catapult
-        catapult = new Catapult(this);
+        catapult = new Catapult();
         new Thread(catapult).start();
         
     }

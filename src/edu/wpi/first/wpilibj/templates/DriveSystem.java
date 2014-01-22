@@ -3,7 +3,6 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.RobotDrive;
 import com.sun.squawk.util.MathUtils;
-import edu.wpi.first.wpilibj.Timer;
 
 public class DriveSystem implements Runnable {
 
